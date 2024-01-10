@@ -2,6 +2,6 @@ describe('Googlesearch', () => {
   it('googletest', () => {
     cy.visit('https://google.com')
 
-    cy.get('#APjFqb').type('Test');
+    cy.get('#APjFqb').type('Australia');
   })
 })
