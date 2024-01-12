@@ -10,6 +10,8 @@ it('with valid login and valid password',()=>{
     cy.get('button[type="submit"]').click()
 
     cy.contains('Dashboard').should('be.visible')
+
+    cy.url().should('eq','https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
 })
 
 it('with invalid login and valid password',()=>{
