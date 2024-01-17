@@ -3,7 +3,7 @@ it('with valid login and valid password',()=>{
      
     cy.visit('/web/index.php/auth/login')
 
-    cy.get('input[name="username"]').type("Admin")
+    cy.get('input[name="username"]',{timeout:40000}).type("Admin")
      
     cy.get('input[name="password"]').type("admin123")
 
