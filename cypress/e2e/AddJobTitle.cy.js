@@ -1,11 +1,13 @@
+import loginData from "../fixtures/login.json"
+import JobTitleData from "../fixtures/JobTitle.json"
 describe("Verify Job Title functionality",()=>{
     it('add new job title',()=>{
          
         cy.visit('/web/index.php/auth/login')
     
-        cy.get('input[name="username"]').type("Admin")
+        cy.get('input[name="username"]').type(loginData.username)
          
-        cy.get('input[name="password"]').type("admin123")
+        cy.get('input[name="password"]').type(loginData.password)
     
         cy.get('button[type="submit"]').click()
     
@@ -24,9 +26,9 @@ describe("Verify Job Title functionality",()=>{
        let randomjobtitle=(Math.random() + 1).toString(36).substring(7);
        let randomdescription = (Math.random() + 1).toString(36).substring(7);
        //enter job title
-       cy.get('#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(2) > input').type("Digital marketer"+randomjobtitle)
+       cy.get('#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(2) > input').type(JobTitleData.Jobtitle+randomjobtitle)
        //enter job description
-       cy.get('textarea[placeholder="Type description here"]').type("Digitalmarketing"+randomdescription) 
+       cy.get('textarea[placeholder="Type description here"]').type(JobTitleData.JobDescription+randomdescription) 
        
        //click on save button
        cy.get('button[type="submit"]').click()
@@ -39,9 +41,9 @@ describe("Verify Job Title functionality",()=>{
          
         cy.visit('/web/index.php/auth/login')
     
-        cy.get('input[name="username"]').type("Admin")
+        cy.get('input[name="username"]').type(loginData.username)
          
-        cy.get('input[name="password"]').type("admin123")
+        cy.get('input[name="password"]').type(loginData.password)
     
         cy.get('button[type="submit"]').click()
     
