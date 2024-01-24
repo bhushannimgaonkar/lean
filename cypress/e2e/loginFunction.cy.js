@@ -1,11 +1,12 @@
+import loginData from "../fixtures/login.json"
 describe("verify login function of the project",()=>{
 it('with valid login and valid password',()=>{
      
     cy.visit('/web/index.php/auth/login')
 
-    cy.get('input[name="username"]',{timeout:40000}).type("Admin")
+    cy.get('input[name="username"]',{timeout:40000}).type(loginData.username)
      
-    cy.get('input[name="password"]').type("admin123")
+    cy.get('input[name="password"]').type(loginData.password)
 
     cy.get('button[type="submit"]').click()
 
@@ -20,7 +21,7 @@ it('with invalid login and valid password',()=>{
 
     cy.get('input[name="username"]').type("sample")
      
-    cy.get('input[name="password"]').type("admin123")
+    cy.get('input[name="password"]').type(loginData.password)
 
     cy.get('button[type="submit"]').click()
 
@@ -31,7 +32,7 @@ it('with valid login and invalid password',()=>{
      
     cy.visit('/web/index.php/auth/login')
 
-    cy.get('input[name="username"]').type("Admin")
+    cy.get('input[name="username"]').type(loginData.username)
      
     cy.get('input[name="password"]').type("sample")
 
