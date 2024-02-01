@@ -1,8 +1,14 @@
+
 import loginData from "../fixtures/login.json"
 describe("verify login function of the project",()=>{
+
+ beforeEach("Launch URL or app",()=>{
+    cy.visit('/web/index.php/auth/login');  
+ 
+ })   
 it('with valid login and valid password',()=>{
      
-    cy.visit('/web/index.php/auth/login')
+    
 
     cy.get('input[name="username"]',{timeout:40000}).type(loginData.username)
      
@@ -17,7 +23,7 @@ it('with valid login and valid password',()=>{
 
 it('with invalid login and valid password',()=>{
      
-    cy.visit('/web/index.php/auth/login')
+    
 
     cy.get('input[name="username"]').type("sample")
      
@@ -30,7 +36,7 @@ it('with invalid login and valid password',()=>{
 
 it('with valid login and invalid password',()=>{
      
-    cy.visit('/web/index.php/auth/login')
+    
 
     cy.get('input[name="username"]').type(loginData.username)
      
@@ -42,7 +48,7 @@ it('with valid login and invalid password',()=>{
 })
 it('with invalid login and invalid password',()=>{
      
-    cy.visit('/web/index.php/auth/login')
+  
 
     cy.get('input[name="username"]').type("sample")
      
