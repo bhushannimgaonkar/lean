@@ -1,9 +1,25 @@
 
+import { afterEach } from "mocha";
 import loginData from "../fixtures/login.json"
 describe("verify login function of the project",()=>{
-
- beforeEach("Launch URL or app",()=>{
+before("Starting Test Run",()=>{
+        cy.log("Starting test run"); 
+     
+     })   
+ 
+beforeEach("Launch URL or app",()=>{
     cy.visit('/web/index.php/auth/login');  
+ 
+ })   
+
+ afterEach("after running each test case",()=>{
+    console.log("after test case run");
+    cy.log(Cypress.mocha.getRunner().suite.ctx.currentTest.title+" Completed") 
+ 
+ })   
+ after("after running each test case",()=>{
+    
+   cy.log("after all the test cases completed")
  
  })   
 it('with valid login and valid password',()=>{
@@ -58,6 +74,7 @@ it('with invalid login and invalid password',()=>{
 
     cy.contains('Invalid credentials').should('be.visible')
 })
+
 
 
 })
