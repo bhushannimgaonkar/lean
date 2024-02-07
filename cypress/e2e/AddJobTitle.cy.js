@@ -1,39 +1,42 @@
 import loginData from "../fixtures/login.json"
 import JobTitleData from "../fixtures/JobTitle.json"
+import login from "../Page Objects/loginPage.po"
+import dashboard from "../Page Objects/dashboardPage.po"
+import jobtitlepage from "../Page Objects/addJobTitlePage.po"
 describe("Verify Job Title functionality",()=>{
     it('add new job title',()=>{
          
         cy.visit('/web/index.php/auth/login')
     
-        cy.get('input[name="username"]').type(loginData.username)
+        cy.get(login.usernamefield()).type(loginData.username)
          
-        cy.get('input[name="password"]').type(loginData.password)
+        cy.get(login.passwordfield()).type(loginData.password)
     
-        cy.get('button[type="submit"]').click()
+        cy.get(login.loginButton()).click()
     
-        cy.contains('Dashboard').should('be.visible')
+        cy.contains(dashboard.dashboardMenu()).should('be.visible')
 
         //click on PIM
 
-        cy.contains('Admin').click()
+        cy.contains(dashboard.adminMenu()).click()
        //Click on Job Menu
-       cy.get('#app > div.oxd-layout > div.oxd-layout-navigation > header > div.oxd-topbar-body > nav > ul > li:nth-child(2) > span').click()
+       cy.xpath(jobtitlepage.jobdropdownMenu()).click()
        //click on Job titles option
-       cy.get('#app > div.oxd-layout > div.oxd-layout-navigation > header > div.oxd-topbar-body > nav > ul > li.--active.oxd-topbar-body-nav-tab.--parent > ul > li:nth-child(1) > a').click()
+       cy.get(jobtitlepage.jobtitlemenuoption()).click()
        //click on Add button
-       cy.contains('Add').click()
+       cy.contains(jobtitlepage.jobtitleaddbutton()).click()
 
        let randomjobtitle=(Math.random() + 1).toString(36).substring(7);
        let randomdescription = (Math.random() + 1).toString(36).substring(7);
        //enter job title
-       cy.get('#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(2) > input').type(JobTitleData.Jobtitle+randomjobtitle)
+       cy.xpath(jobtitlepage.jobtitlefield()).type(JobTitleData.Jobtitle+randomjobtitle)
        //enter job description
-       cy.get('textarea[placeholder="Type description here"]').type(JobTitleData.JobDescription+randomdescription) 
+       cy.get(jobtitlepage.jobdescriptionfield()).type(JobTitleData.JobDescription+randomdescription) 
        
        //click on save button
-       cy.get('button[type="submit"]').click()
+       cy.get(jobtitlepage.savebutton()).click()
 
-       cy.contains('Successfully Saved').should('be.visible')
+       cy.contains(jobtitlepage.successmessage()).should('be.visible')
 
 
     })
@@ -47,24 +50,24 @@ describe("Verify Job Title functionality",()=>{
     
         cy.get('button[type="submit"]').click()
     
-        cy.contains('Dashboard').should('be.visible')
+        cy.contains(dashboard.dashboardMenu()).should('be.visible')
 
         //click on PIM
 
-        cy.contains('Admin').click()
+        cy.contains(dashboard.adminMenu()).click()
        //Click on Job Menu
-       cy.get('#app > div.oxd-layout > div.oxd-layout-navigation > header > div.oxd-topbar-body > nav > ul > li:nth-child(2) > span').click()
+       cy.xpath(jobtitlepage.jobdropdownMenu()).click()
        //click on Job titles option
-       cy.get('#app > div.oxd-layout > div.oxd-layout-navigation > header > div.oxd-topbar-body > nav > ul > li.--active.oxd-topbar-body-nav-tab.--parent > ul > li:nth-child(1) > a').click()
+       cy.get(jobtitlepage.jobtitlemenuoption()).click()
        //click on Add button
-       cy.contains('Add').click()
+       cy.contains(jobtitlepage.jobtitleaddbutton()).click()
 
        
        
        //click on save button
-       cy.get('button[type="submit"]').click()
+       cy.get(jobtitlepage.savebutton()).click()
 
-       cy.get('#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > span').should('be.visible')
+       cy.get(jobtitlepage.errormessage()).should('be.visible')
 
 
     })

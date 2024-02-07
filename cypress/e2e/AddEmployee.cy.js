@@ -17,7 +17,7 @@ describe("Verify Add employee functionality for the project",()=>{
 
         //click on PIM
 
-        cy.contains('PIM').click()
+        cy.contains(dashboard.PIMmenu()).click()
        //Click on Add employee
        cy.contains(addEmployee.addemployeeMenu()).click()
 
@@ -48,7 +48,7 @@ describe("Verify Add employee functionality for the project",()=>{
 
         //click on PIM
 
-        cy.contains('PIM').click()
+        cy.contains(dashboard.PIMmenu()).click()
        //Click on Add employee
        cy.contains(addEmployee.addemployeeMenu()).click()
 

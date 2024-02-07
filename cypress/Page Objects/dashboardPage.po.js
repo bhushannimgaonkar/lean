@@ -6,6 +6,16 @@ class dashboardPage{
 
    }
 
+   PIMmenu(){
+
+      return 'PIM';
+   }
+
+   adminMenu(){
+
+      return "Admin";
+   }
+
 }
 
 const dashboard =new dashboardPage();
