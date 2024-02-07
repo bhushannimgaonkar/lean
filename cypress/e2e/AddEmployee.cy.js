@@ -52,7 +52,7 @@ describe("Verify Add employee functionality for the project",()=>{
        //Click on Add employee
        cy.contains(addEmployee.addemployeeMenu()).click()
 
-       cy.get(addEmployee.savebuttonfield).click()
+       cy.get(addEmployee.savebuttonfield()).click()
 
        cy.get('#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div.orangehrm-employee-container > div.orangehrm-employee-form > div:nth-child(1) > div.oxd-grid-1.orangehrm-full-width-grid > div > div > div.--name-grouped-field > div:nth-child(1) > span').should('be.visible')
        cy.get('#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div.orangehrm-employee-container > div.orangehrm-employee-form > div:nth-child(1) > div.oxd-grid-1.orangehrm-full-width-grid > div > div > div.--name-grouped-field > div:nth-child(3) > span').should('be.visible')
