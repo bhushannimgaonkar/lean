@@ -1,7 +1,7 @@
 
 import { afterEach } from "mocha";
 import loginData from "../fixtures/login.json"
-import login from "../Page Objects/LoginPage.po";
+import login from "../Page Objects/loginPage.po";
 import dashboard from "../Page Objects/dashboardPage.po";
 describe("verify login function of the project",()=>{
 before("Starting Test Run",()=>{
