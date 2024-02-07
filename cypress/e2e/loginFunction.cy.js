@@ -2,6 +2,7 @@
 import { afterEach } from "mocha";
 import loginData from "../fixtures/login.json"
 import login from "../Page Objects/LoginPage.po";
+import dashboard from "../Page Objects/dashboardPage.po";
 describe("verify login function of the project",()=>{
 before("Starting Test Run",()=>{
         cy.log("Starting test run"); 
@@ -35,7 +36,7 @@ it('with valid login and valid password',()=>{
 
     //cy.contains(login.loginerrormessage()).should("not.be.visible");
 
-    cy.contains('Dashboard').should('be.visible')
+    cy.contains(dashboard.dashboardMenu()).should('be.visible')
 
     cy.url().should('eq','https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index')
 })
